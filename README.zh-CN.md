@@ -1,0 +1,212 @@
+# Rental Manager 出租屋管理系统
+
+这是一个面向 Florida 小型房东的中英双语出租屋管理 Container 项目，适合管理约 20–50 套出租屋。项目功能范围参考 MicroRealEstate，但架构刻意保持简单：一个 Web App container + 一个 PostgreSQL 数据库，方便用 Portainer 部署。
+
+![仪表盘总览](docs/images/dashboard-overview.svg)
+
+## 主要功能
+
+- **Landlord/Admin Portal 房东后台**：管理房屋、租客、租约、租金、维修和文件
+- **Tenant Portal 租客门户**：租客查看/下载 lease PDF、查看租金记录、提交维修、查看通知、上传 renter insurance
+- **中英双语界面基础**：支持 English / 中文切换
+- **房源总览地图**：用 Leaflet + OpenStreetMap 在 Admin 页面显示所有出租屋位置，不需要 Google API key
+- **单个房屋地图**：Property 详情页用 Google Maps 地址嵌入/搜索链接显示地图，也不需要 Google API key
+- **Florida 长租住宅 Lease 模板**：已归档你提供的 DOCX，并提取整理成模板素材
+- **Lease PDF 生成管线**：使用 `pdf-lib` 生成 PDF
+- **PostgreSQL + Prisma 数据模型**
+- **Docker / Portainer 部署**
+- **当前手动发布 GHCR image；内含可选 GitHub Actions workflow 模板**
+
+## 当前界面图文
+
+### 房东/Admin 仪表盘
+
+Admin 页面包含关键指标、房源总览地图，以及房屋、租客、租约、租金账本、维修、文件等模块入口。
+
+![房东仪表盘](docs/images/dashboard-overview.svg)
+
+### 租客门户
+
+Tenant Portal 面向租客自助使用：下载租约 PDF、查看租金记录、提交维修请求、查看通知、上传租客保险文件。
+
+![租客门户](docs/images/tenant-portal.svg)
+
+### 单个房屋地图
+
+每个 Property 详情页可以用地址生成 Google Maps 地图和打开链接。第一版不需要 Google Maps API key。
+
+![房屋地图](docs/images/property-map.svg)
+
+## 技术栈
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- Prisma ORM
+- PostgreSQL 16
+- Leaflet + OpenStreetMap
+- Google Maps 地址嵌入链接
+- `pdf-lib` PDF 生成
+- Docker multi-stage build
+- 手动发布 GHCR；可选 GitHub Actions 模板
+
+## 项目结构
+
+```text
+app/                         Next.js 路由
+  landlord/                  房东/Admin 后台
+  tenant/                    租客门户
+  api/                       Health 和 Lease PDF API
+components/                  UI、地图、房屋组件
+lib/                         i18n、地图 helper、Prisma、lease helper
+prisma/                      数据库 schema、migration、seed
+templates/                   Lease 模板归档和提取文本
+docs/images/                 README 图文素材
+.github/workflows/           GHCR 发布 workflow
+Dockerfile                   生产镜像构建
+docker-compose.yml           本地 Docker Compose
+docker-compose.portainer.yml Portainer Stack 模板
+PORTAINER.md                 部署说明
+README.md                    英文 README
+```
+
+## Lease 模板
+
+原始 Florida lease DOCX 归档在：
+
+```text
+templates/original/empty-florida-lease.docx
+```
+
+提取文本和 Markdown 模板在：
+
+```text
+templates/lease/florida-long-term-lease-source-extract.txt
+templates/lease/florida-long-term-lease.md
+```
+
+> 法律提醒：正式投入使用前，建议请 Florida landlord-tenant attorney 审阅 lease 模板，尤其是 late fee、security deposit、eviction notice、repair charge 等条款。
+
+## 数据模型概览
+
+初版 Prisma 模型包括：
+
+- `User`
+- `Property`
+- `Tenant`
+- `LeaseTemplate`
+- `Lease`
+- `LeaseTenant`
+- `RentCharge`
+- `RentPayment`
+- `MaintenanceRequest`
+- `Document`
+
+`Property` 已包含可选字段：
+
+```text
+latitude
+longitude
+```
+
+用于 Admin 房源总览地图。
+
+## 本地开发
+
+```bash
+cp .env.example .env
+npm install
+npm run prisma:generate
+npm run dev
+```
+
+打开：
+
+```text
+http://localhost:3000
+```
+
+常用路径：
+
+```text
+/landlord
+/tenant
+/landlord/properties/demo
+/api/health
+/api/leases/demo/pdf
+```
+
+## Docker Image
+
+发布镜像：
+
+```text
+ghcr.io/yonggangg/rental:latest
+```
+
+本地构建：
+
+```bash
+docker build -t rental:test .
+```
+
+## 用 Portainer 部署
+
+使用项目里的 `docker-compose.portainer.yml` 创建 Portainer Stack。
+
+### 必填环境变量
+
+```env
+APP_URL=https://your-domain.example.com
+NEXTAUTH_URL=https://your-domain.example.com
+NEXTAUTH_SECRET=replace-with-long-random-secret
+POSTGRES_DB=rental
+POSTGRES_USER=rental
+POSTGRES_PASSWORD=replace-with-strong-password
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=replace-with-temporary-admin-password
+ADMIN_NAME=Landlord Admin
+```
+
+生成 secret：
+
+```bash
+openssl rand -base64 32
+```
+
+### Portainer 操作步骤
+
+1. 打开 **Portainer → Stacks → Add stack**。
+2. Stack 名称填写 `rental`。
+3. 粘贴 `docker-compose.portainer.yml` 内容。
+4. 填入上面的环境变量。
+5. 点击 Deploy。
+6. 打开 `APP_URL`，或用服务器 IP + 端口访问，例如：`http://server-ip:3000`。
+
+如果 GHCR package 是 Public，Portainer 不需要 registry 登录。如果以后改成 Private，则需要在 Portainer 里添加 `ghcr.io` registry credential。
+
+更多细节见 [PORTAINER.md](PORTAINER.md)。
+
+## GitHub Release 与 GHCR
+
+`docs/github-actions/docker-ghcr.yml` 是可选 workflow 模板，可用于发布 image 到：
+
+```text
+ghcr.io/yonggangg/rental
+```
+
+push 到 `main` 时发布：
+
+- `latest`
+- `sha-<commit>`
+
+创建版本 tag，例如 `v0.1.0` 时，也会发布对应版本 image。
+
+## 当前状态
+
+这是 MVP skeleton，还不是完整生产系统。当前已经包含：页面结构、地图组件、数据模型、lease 模板归档、PDF 生成管线、Docker 部署和双语文档。下一步应继续实现真实 CRUD、登录流程、租客文件上传、租金账本自动生成、完整 lease PDF 渲染等功能。
+
+## License
+
+MIT。见 [LICENSE](LICENSE)。
