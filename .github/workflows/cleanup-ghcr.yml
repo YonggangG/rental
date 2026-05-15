@@ -1,0 +1,58 @@
+name: Cleanup GHCR old rental images
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Keep latest only
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: YonggangG
+          PACKAGE_NAME: rental
+          KEEP_TAG: latest
+        run: |
+          set -euo pipefail
+          api="https://api.github.com/users/${OWNER}/packages/container/${PACKAGE_NAME}/versions?per_page=100"
+          versions="$(mktemp)"
+          curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$api" > "$versions"
+
+          echo "Current versions:"
+          jq -r '.[] | "id=\(.id) tags=\(.metadata.container.tags // []) created=\(.created_at)"' "$versions"
+
+          keep_ids="$(jq -r --arg keep "$KEEP_TAG" '.[] | select((.metadata.container.tags // []) | index($keep)) | .id' "$versions")"
+          if [ -z "$keep_ids" ]; then
+            echo "ERROR: no version has tag ${KEEP_TAG}; refusing to delete anything." >&2
+            exit 1
+          fi
+          echo "Keeping version id(s) with ${KEEP_TAG}:"
+          echo "$keep_ids"
+
+          jq -r --argjson keep "[$(echo "$keep_ids" | paste -sd, -)]" \
+            '.[] | select((.id as $id | $keep | index($id)) | not) | .id' "$versions" \
+            | while read -r id; do
+                [ -n "$id" ] || continue
+                echo "Deleting version id=${id}"
+                curl -fsSL -X DELETE \
+                  -H "Authorization: Bearer ${GH_TOKEN}" \
+                  -H "Accept: application/vnd.github+json" \
+                  -H "X-GitHub-Api-Version: 2022-11-28" \
+                  "https://api.github.com/users/${OWNER}/packages/container/${PACKAGE_NAME}/versions/${id}"
+              done
+
+          echo "Remaining versions:"
+          curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$api" | jq -r '.[] | "id=\(.id) tags=\(.metadata.container.tags // []) created=\(.created_at)"'
