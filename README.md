@@ -245,7 +245,7 @@ On version tags such as `v0.1.0`, it also publishes the tag image.
 
 ## Current Status
 
-This is an active MVP. It now includes password-protected landlord and tenant portals, core CRUD pages for properties, tenants, leases, rent charges, maintenance requests, documents, and lease templates, plus map views and a lease PDF pipeline. Remaining production work includes polished edit forms, file upload storage, rent automation, tenant-submitted maintenance forms, and attorney-reviewed full lease rendering.
+This is an active MVP. It now includes password-protected landlord and tenant portals, core CRUD pages for properties, tenants, leases, rent charges, maintenance requests, documents, and lease templates, plus map views and a lease PDF pipeline. This release adds upload storage, tenant-submitted maintenance, monthly rent-charge generation, richer lease PDF rendering, and server-side update actions. Remaining production work includes polished per-record edit screens, payment workflows, role-management UI, and attorney-reviewed lease wording.
 
 ## License
 

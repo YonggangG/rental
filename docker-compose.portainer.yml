@@ -10,7 +10,11 @@ services:
       DATABASE_URL: "postgresql://rental:${POSTGRES_PASSWORD}@db:5432/rental?schema=public"
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      UPLOAD_DIR: "/data/uploads"
       ADMIN_NAME: ${ADMIN_NAME}
+    volumes:
+  rental_uploads:
+      - rental_uploads:/data/uploads
     depends_on:
       db:
         condition: service_healthy
@@ -23,6 +27,7 @@ services:
       POSTGRES_USER: "rental"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
     volumes:
+  rental_uploads:
       - rental_postgres:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U rental -d rental"]
@@ -32,4 +37,5 @@ services:
     restart: unless-stopped
 
 volumes:
+  rental_uploads:
   rental_postgres:
