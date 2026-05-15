@@ -203,4 +203,4 @@ This is an MVP scaffold, not a finished production system. It currently includes
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+No open-source license has been selected yet. Unless the repository owner adds a license later, all rights are reserved by default.

@@ -209,4 +209,4 @@ push 到 `main` 时发布：
 
 ## License
 
-MIT。见 [LICENSE](LICENSE)。
+尚未选择开源许可证。除非仓库 owner 后续添加 license，否则默认保留所有权利。
