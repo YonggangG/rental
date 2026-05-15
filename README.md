@@ -49,7 +49,7 @@ Each property detail page can display a map using an address-based Google Maps e
 - Google Maps URL embed for single-property views
 - `pdf-lib` for PDF generation
 - Docker multi-stage build
-- Manual GHCR publishing now; optional GitHub Actions workflow template included
+- GitHub Actions for GHCR publishing
 
 ## Repository Structure
 
@@ -63,7 +63,8 @@ lib/                         i18n, map helpers, Prisma, lease helpers
 prisma/                      Database schema, migrations, seed script
 templates/                   Lease template archive and extracted text
 docs/images/                 README diagrams/screenshots
-docs/github-actions/           Optional GHCR publish workflow template
+.github/workflows/           GHCR publish workflow
+docs/github-actions/           Backup workflow template
 Dockerfile                   Production image build
 docker-compose.yml           Local Docker Compose
 docker-compose.portainer.yml Portainer stack template
@@ -183,7 +184,7 @@ More details are in [PORTAINER.md](PORTAINER.md).
 
 ## GitHub Release and GHCR
 
-The optional workflow template at `docs/github-actions/docker-ghcr.yml` can publish images to:
+The workflow at `.github/workflows/docker-ghcr.yml` publishes images to:
 
 ```text
 ghcr.io/yonggangg/rental
