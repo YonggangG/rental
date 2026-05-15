@@ -34,6 +34,7 @@ enum ChargeStatus {
   PARTIAL
   PAID
   LATE
+  OVERDUE
   VOID
 }
 
@@ -69,6 +70,8 @@ model Property {
   status      PropertyStatus @default(VACANT)
   monthlyRent Decimal?       @db.Decimal(10, 2)
   deposit     Decimal?       @db.Decimal(10, 2)
+  marketValue Decimal?       @db.Decimal(12, 2)
+  rentDueDay  Int?
   hoaName     String?
   latitude    Decimal?       @db.Decimal(9, 6)
   longitude   Decimal?       @db.Decimal(9, 6)
@@ -87,6 +90,8 @@ model Tenant {
   lastName       String
   email          String?
   phone          String?
+  rentDueDay     Int?
+  smsOptIn       Boolean  @default(false)
   emergencyName  String?
   emergencyPhone String?
   notes          String?
@@ -118,6 +123,7 @@ model Lease {
   startDate      DateTime
   endDate        DateTime
   monthlyRent    Decimal     @db.Decimal(10, 2)
+  rentDueDay     Int?
   securityDeposit Decimal?   @db.Decimal(10, 2)
   petFeeMonthly  Decimal?    @db.Decimal(10, 2)
   repairThreshold Decimal?   @db.Decimal(10, 2)
@@ -175,6 +181,7 @@ model MaintenanceRequest {
   description String
   status      MaintenanceStatus @default(OPEN)
   priority    String            @default("normal")
+  cost        Decimal?          @db.Decimal(10, 2)
   createdAt   DateTime          @default(now())
   updatedAt   DateTime          @updatedAt
   property    Property          @relation(fields: [propertyId], references: [id])

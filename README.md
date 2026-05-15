@@ -13,6 +13,11 @@ A bilingual English/Chinese rental-property management container for small Flori
 - **Property detail map** using Google Maps embed/search URL without a Google API key
 - **Florida long-term residential lease template** archived from the provided DOCX and prepared for PDF generation
 - **Lease PDF generation pipeline** using `pdf-lib`
+- **Core edit pages** for properties, tenants, leases, rent charges, maintenance, documents, and lease templates
+- **Persistent document uploads** under `/data/uploads`, with safe path handling, categorization, download links, and property/tenant/lease binding
+- **Rent automation** for monthly charge generation, duplicate prevention, overdue status, late fees, payment entry, and tenant balance summaries
+- **Rental operations fields** including property market value, monthly due day on properties/leases/tenants, maintenance cost, tenant SMS reminder opt-in, and multi-tenant lease creation
+- **Cleaner lease PDFs** with template fallback, wrapped text, pagination, and structured landlord/tenant/witness signature blocks
 - **PostgreSQL + Prisma** data model
 - **Docker/Portainer deployment**
 - **GitHub Actions → GHCR image publishing**
@@ -33,7 +38,7 @@ The Admin portal includes summary metrics, a Leaflet/OpenStreetMap portfolio map
 
 ### Admin CRUD and Rent Generation
 
-Admin pages provide create/update foundations for core records. The rent ledger can generate monthly rent charges from active leases.
+Admin pages provide create/update foundations for core records. The rent ledger can generate monthly rent charges from active leases, avoid duplicate monthly charges, mark overdue balances, apply late fees, and record payments.
 
 ![Admin CRUD and rent generation](docs/images/admin-crud-rent.svg)
 
@@ -116,7 +121,7 @@ Initial Prisma models include:
 - `MaintenanceRequest`
 - `Document`
 
-`Property` includes optional `latitude` and `longitude` fields for the Admin portfolio map.
+`Property` includes optional `latitude`, `longitude`, and `marketValue` fields for the Admin portfolio map and property valuation tracking.
 
 ## Local Development
 
@@ -149,18 +154,15 @@ Published image:
 
 ```text
 ghcr.io/yonggangg/rental:latest
-ghcr.io/yonggangg/rental:v0.3.2
 ```
 
-Current `latest` image size:
+Current local `latest` image size:
 
 ```text
-linux/amd64 pull size: about 326.5 MiB
-Decimal size: about 342.4 MB
-Layers: 16
+Decimal size: about 552 MB
 ```
 
-Portainer's first pull will download roughly 340 MB, plus the PostgreSQL image if it is not already present on the server.
+The project publishes GHCR as `latest` only. Portainer will also download the PostgreSQL image if it is not already present on the server.
 
 Local build:
 
@@ -251,13 +253,12 @@ ghcr.io/yonggangg/rental
 On pushes to `main`, it publishes:
 
 - `latest`
-- `sha-<commit>`
 
-On version tags such as `v0.1.0`, it also publishes the tag image.
+GitHub Releases use version tags such as `v0.4.2`, but the container package intentionally keeps only the `latest` image tag.
 
 ## Current Status
 
-This is an active MVP. It now includes password-protected landlord and tenant portals, core CRUD pages for properties, tenants, leases, rent charges, maintenance requests, documents, and lease templates, plus map views and a lease PDF pipeline. This release adds upload storage, tenant-submitted maintenance, monthly rent-charge generation, richer lease PDF rendering, and server-side update actions. Remaining production work includes polished per-record edit screens, payment workflows, role-management UI, and attorney-reviewed lease wording.
+This is an active MVP. It now includes password-protected landlord and tenant portals, core CRUD/edit pages for properties, tenants, leases, rent charges, maintenance requests, documents, and lease templates, plus map views, persistent uploads, rent automation, tenant balance summaries, multi-tenant leases, and a cleaner lease PDF pipeline. Remaining production work includes SMS provider integration, payment workflows, role-management UI, audit logs, and attorney-reviewed lease wording.
 
 ## License
 

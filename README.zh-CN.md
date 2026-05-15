@@ -13,6 +13,11 @@
 - **单个房屋地图**：Property 详情页用 Google Maps 地址嵌入/搜索链接显示地图，也不需要 Google API key
 - **Florida 长租住宅 Lease 模板**：已归档你提供的 DOCX，并提取整理成模板素材
 - **Lease PDF 生成管线**：使用 `pdf-lib` 生成 PDF
+- **核心对象编辑页**：properties、tenants、leases、rent charges、maintenance、documents、lease templates
+- **持久化文件上传**：使用 `/data/uploads`，支持安全路径、分类、下载、删除，以及绑定 property/tenant/lease
+- **租金自动化**：按 active leases 生成月租账单、防重复、逾期状态、滞纳金、收款录入和租客余额汇总
+- **出租运营字段**：property market value、property/lease/tenant 每月缴租日、maintenance cost、tenant 短信提醒开关，以及 create lease 多租客选择
+- **更干净的 Lease PDF**：模板兜底、正文自动换行/分页，以及 landlord/tenant/witness 签名区
 - **PostgreSQL + Prisma 数据模型**
 - **Docker / Portainer 部署**
 - **GitHub Actions 自动发布 GHCR image**
@@ -155,18 +160,15 @@ http://localhost:3000
 
 ```text
 ghcr.io/yonggangg/rental:latest
-ghcr.io/yonggangg/rental:v0.3.2
 ```
 
-当前 `latest` 镜像大小：
+当前本机 `latest` 镜像大小：
 
 ```text
-linux/amd64 pull size: 约 326.5 MiB
-十进制大小：约 342.4 MB
-Layers: 16
+十进制大小：约 552 MB
 ```
 
-Portainer 第一次 pull 大约会下载 340 MB；如果服务器还没有 PostgreSQL 镜像，还会额外下载 PostgreSQL image。
+项目发布到 GHCR 时只保留 `latest`。如果服务器还没有 PostgreSQL 镜像，Portainer 部署时还会额外下载 PostgreSQL image。
 
 本地构建：
 
@@ -257,13 +259,12 @@ ghcr.io/yonggangg/rental
 push 到 `main` 时发布：
 
 - `latest`
-- `sha-<commit>`
 
-创建版本 tag，例如 `v0.1.0` 时，也会发布对应版本 image。
+GitHub Release 使用 `v0.4.2` 这类版本 tag，但 container package 有意只保留 `latest` image tag。
 
 ## 当前状态
 
-这是正在完善中的 MVP。当前已经包含：带密码保护的房东和租客门户、房屋/租客/租约/租金账单/维修/文件/租约模板核心 CRUD 页面、地图视图和 lease PDF 生成管线。本版本新增文件上传存储、租客提交维修、月租账单生成、更完整的 lease PDF 渲染和服务端更新 actions。后续生产化工作还包括更精细的逐条编辑页面、付款流程、角色管理界面，以及经律师审阅后的 lease 文案。
+这是正在完善中的 MVP。当前已经包含：带密码保护的房东和租客门户、房屋/租客/租约/租金账单/维修/文件/租约模板核心 CRUD/edit 页面、地图视图、持久化文件上传、租金自动化、租客余额汇总、多租客 lease 创建和更干净的 lease PDF 管线。后续生产化工作还包括短信 provider 接入、付款流程、角色管理界面、审计日志，以及经律师审阅后的 lease 文案。
 
 ## License
 

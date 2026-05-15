@@ -3,7 +3,6 @@ name: Build and publish Docker image
 on:
   push:
     branches: ["main"]
-    tags: ["v*"]
   workflow_dispatch:
 
 permissions:
@@ -34,7 +33,6 @@ jobs:
           images: ghcr.io/yonggangg/rental
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
-            type=ref,event=tag
 
       - name: Build and push
         uses: docker/build-push-action@v6

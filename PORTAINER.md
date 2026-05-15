@@ -55,6 +55,9 @@ services:
       ADMIN_EMAIL: ${ADMIN_EMAIL}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       ADMIN_NAME: ${ADMIN_NAME}
+      UPLOAD_DIR: "/data/uploads"
+    volumes:
+      - /home/xin/docker/rental_uploads:/data/uploads
     depends_on:
       db:
         condition: service_healthy
@@ -67,7 +70,7 @@ services:
       POSTGRES_USER: "rental"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
     volumes:
-      - rental_postgres:/var/lib/postgresql/data
+      - /home/xin/docker/rental_postgres:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U rental -d rental"]
       interval: 10s
@@ -75,8 +78,13 @@ services:
       retries: 5
     restart: unless-stopped
 
-volumes:
-  rental_postgres:
+```
+
+The bind mounts keep data durable on the host:
+
+```text
+/home/xin/docker/rental_postgres -> /var/lib/postgresql/data
+/home/xin/docker/rental_uploads  -> /data/uploads
 ```
 
 ## First Deployment Notes
@@ -84,7 +92,7 @@ volumes:
 - On startup, the app container runs Prisma migrations.
 - If `ADMIN_EMAIL` and `ADMIN_PASSWORD` are set, it seeds the initial admin user and lease template.
 - Change the temporary admin password after the full auth/account UI is implemented.
-- The database is stored in the named Docker volume `rental_postgres`.
+- The database and uploaded files are stored in the host bind mounts shown above.
 
 ## GHCR Access
 
