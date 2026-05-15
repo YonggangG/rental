@@ -1,23 +1,2 @@
-import { LanguageSwitch } from '@/components/LanguageSwitch';
-import { getLocale, t } from '@/lib/i18n';
-
-export default function TenantPage({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
-  const locale = getLocale(searchParams);
-  const m = t(locale);
-  const items = [m.leases, m.rentLedger, m.maintenance, 'Notices / 通知', 'Insurance / 租客保险'];
-  return (
-    <main className="mx-auto max-w-5xl px-6 py-10">
-      <header className="flex items-center justify-between">
-        <div>
-          <a className="text-sm text-slate-500" href={`/?lang=${locale}`}>← Home</a>
-          <h1 className="mt-3 text-3xl font-bold">{m.tenantPortal}</h1>
-          <p className="mt-2 text-slate-600">{m.tenantWelcome}</p>
-        </div>
-        <LanguageSwitch locale={locale} />
-      </header>
-      <section className="mt-8 grid gap-4 md:grid-cols-2">
-        {items.map((item) => <div className="card" key={item}><h2 className="font-semibold">{item}</h2><p className="mt-2 text-sm text-slate-500">Tenant self-service placeholder.</p></div>)}
-      </section>
-    </main>
-  );
-}
+import { TenantShell } from '@/components/TenantShell';import { getLocale,t,statusLabel } from '@/lib/i18n';import { requireUser } from '@/lib/auth/session';import { prisma } from '@/lib/prisma';
+export default async function TenantPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) { const user=await requireUser(); const sp=await searchParams; const locale=getLocale(sp); const m=t(locale); const tenant=user.tenant; const leases=tenant?await prisma.leaseTenant.findMany({where:{tenantId:tenant.id},include:{lease:{include:{property:true,charges:true,documents:true}}}}):[]; const balance=leases.flatMap(x=>x.lease.charges).reduce((sum,c)=>sum+Number(c.amount)+Number(c.lateFee),0); return <TenantShell locale={locale} title={m.tenantPortal}><p className="text-slate-600">{m.tenantWelcome}</p><section className="mt-6 grid gap-4 md:grid-cols-3"><div className="card"><p className="text-sm text-slate-500">{m.leases}</p><p className="mt-2 text-2xl font-bold">{leases.length}</p></div><div className="card"><p className="text-sm text-slate-500">{m.rentLedger}</p><p className="mt-2 text-2xl font-bold">${balance.toFixed(2)}</p></div><div className="card"><p className="text-sm text-slate-500">{m.status}</p><p className="mt-2 text-2xl font-bold">{leases[0]?statusLabel(locale,leases[0].lease.status):'-'}</p></div></section></TenantShell> }

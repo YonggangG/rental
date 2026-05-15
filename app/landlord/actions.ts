@@ -1,0 +1,33 @@
+'use server';
+
+import bcrypt from 'bcryptjs';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/prisma';
+import { requireAdmin } from '@/lib/auth/session';
+
+const s = (fd: FormData, k: string) => String(fd.get(k) || '').trim();
+const n = (fd: FormData, k: string) => { const v=s(fd,k); return v ? Number(v) : null; };
+const d = (fd: FormData, k: string) => new Date(`${s(fd,k)}T00:00:00`);
+function back(path: string, lang: string) { revalidatePath(path); redirect(`${path}?lang=${lang}`); }
+
+export async function createProperty(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.property.create({ data: { nickname:s(fd,'nickname')||null, address1:s(fd,'address1'), address2:s(fd,'address2')||null, city:s(fd,'city'), state:s(fd,'state')||'FL', zip:s(fd,'zip'), bedrooms:n(fd,'bedrooms'), bathrooms:n(fd,'bathrooms'), monthlyRent:n(fd,'monthlyRent'), deposit:n(fd,'deposit'), latitude:n(fd,'latitude'), longitude:n(fd,'longitude'), status:s(fd,'status') as any, notes:s(fd,'notes')||null }}); back('/landlord/properties',lang); }
+export async function deleteProperty(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.property.delete({ where:{ id:s(fd,'id') }}); back('/landlord/properties',lang); }
+
+export async function createTenant(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; const email=s(fd,'email').toLowerCase() || null; const password=s(fd,'password'); let userId: string | undefined; if (email && password) { const user = await prisma.user.upsert({ where:{ email }, update:{ name:`${s(fd,'firstName')} ${s(fd,'lastName')}`, role:'TENANT', passwordHash: await bcrypt.hash(password,12) }, create:{ email, name:`${s(fd,'firstName')} ${s(fd,'lastName')}`, role:'TENANT', passwordHash: await bcrypt.hash(password,12) }}); userId=user.id; } await prisma.tenant.create({ data:{ userId, firstName:s(fd,'firstName'), lastName:s(fd,'lastName'), email, phone:s(fd,'phone')||null, emergencyName:s(fd,'emergencyName')||null, emergencyPhone:s(fd,'emergencyPhone')||null, notes:s(fd,'notes')||null }}); back('/landlord/tenants',lang); }
+export async function deleteTenant(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.tenant.delete({ where:{ id:s(fd,'id') }}); back('/landlord/tenants',lang); }
+
+export async function createLease(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; const lease = await prisma.lease.create({ data:{ propertyId:s(fd,'propertyId'), templateId:s(fd,'templateId')||null, status:s(fd,'status') as any, startDate:d(fd,'startDate'), endDate:d(fd,'endDate'), monthlyRent:n(fd,'monthlyRent') || 0, securityDeposit:n(fd,'securityDeposit'), petFeeMonthly:n(fd,'petFeeMonthly'), repairThreshold:n(fd,'repairThreshold') }}); const tenantId=s(fd,'tenantId'); if (tenantId) await prisma.leaseTenant.create({ data:{ leaseId:lease.id, tenantId, primary:true }}); back('/landlord/leases',lang); }
+export async function deleteLease(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.lease.delete({ where:{ id:s(fd,'id') }}); back('/landlord/leases',lang); }
+
+export async function createCharge(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.rentCharge.create({ data:{ leaseId:s(fd,'leaseId'), dueDate:d(fd,'dueDate'), description:s(fd,'description')||'Monthly rent', amount:n(fd,'amount')||0, lateFee:n(fd,'lateFee')||0, status:s(fd,'status') as any }}); back('/landlord/rent',lang); }
+export async function deleteCharge(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.rentCharge.delete({ where:{ id:s(fd,'id') }}); back('/landlord/rent',lang); }
+
+export async function createMaintenance(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.maintenanceRequest.create({ data:{ propertyId:s(fd,'propertyId'), tenantId:s(fd,'tenantId')||null, title:s(fd,'title'), description:s(fd,'description'), priority:s(fd,'priority')||'normal', status:s(fd,'status') as any }}); back('/landlord/maintenance',lang); }
+export async function deleteMaintenance(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.maintenanceRequest.delete({ where:{ id:s(fd,'id') }}); back('/landlord/maintenance',lang); }
+
+export async function createDocument(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.document.create({ data:{ title:s(fd,'title'), kind:s(fd,'kind'), path:s(fd,'path'), propertyId:s(fd,'propertyId')||null, tenantId:s(fd,'tenantId')||null, leaseId:s(fd,'leaseId')||null }}); back('/landlord/documents',lang); }
+export async function deleteDocument(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.document.delete({ where:{ id:s(fd,'id') }}); back('/landlord/documents',lang); }
+
+export async function createTemplate(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.leaseTemplate.create({ data:{ name:s(fd,'name'), version:s(fd,'version')||'1.0', jurisdiction:s(fd,'jurisdiction')||'Florida', bodyMarkdown:s(fd,'bodyMarkdown'), active:s(fd,'active')==='on' }}); back('/landlord/lease-templates',lang); }
+export async function deleteTemplate(fd: FormData) { await requireAdmin(); const lang=s(fd,'lang')||'en'; await prisma.leaseTemplate.delete({ where:{ id:s(fd,'id') }}); back('/landlord/lease-templates',lang); }

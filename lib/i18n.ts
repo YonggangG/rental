@@ -2,42 +2,17 @@ export type Locale = 'en' | 'zh';
 
 const messages = {
   en: {
-    appName: 'Rental Manager',
-    tagline: 'Florida rental operations for 20–50 homes.',
-    landlordPortal: 'Landlord Portal',
-    tenantPortal: 'Tenant Portal',
-    dashboard: 'Dashboard',
-    properties: 'Properties',
-    tenants: 'Tenants',
-    leases: 'Leases',
-    rentLedger: 'Rent Ledger',
-    maintenance: 'Maintenance',
-    documents: 'Documents',
-    tenantWelcome: 'View your lease, rent balance, maintenance requests, notices, and insurance documents.',
-    landlordWelcome: 'Manage properties, tenants, leases, rent tracking, notices, maintenance, and documents.'
+    appName: 'Rental Manager', tagline: 'Florida rental operations for 20–50 homes.', home: 'Home', signIn: 'Sign in', signOut: 'Sign out', signInHelp: 'Use your admin or tenant account.', invalidLogin: 'Invalid email or password.', email: 'Email', password: 'Password', save: 'Save', create: 'Create', update: 'Update', delete: 'Delete', actions: 'Actions', view: 'View', status: 'Status', amount: 'Amount', date: 'Date', notes: 'Notes', dashboard: 'Dashboard', landlordPortal: 'Landlord Portal', tenantPortal: 'Tenant Portal', properties: 'Properties', tenants: 'Tenants', leases: 'Leases', leaseTemplates: 'Lease Templates', rentLedger: 'Rent Ledger', maintenance: 'Maintenance', documents: 'Documents', notices: 'Notices', insurance: 'Insurance', map: 'Map', landlordWelcome: 'Manage properties, tenants, leases, rent tracking, notices, maintenance, and documents.', tenantWelcome: 'View your lease, rent balance, maintenance requests, notices, and insurance documents.', portfolioMap: 'Portfolio Map', portfolioMapHelp: 'All rental properties on one OpenStreetMap view.', occupied: 'Occupied', vacant: 'Vacant', maintenanceStatus: 'Maintenance', inactive: 'Inactive', noRecords: 'No records yet.', address: 'Address', city: 'City', state: 'State', zip: 'ZIP', nickname: 'Nickname', monthlyRent: 'Monthly Rent', deposit: 'Deposit', bedrooms: 'Bedrooms', bathrooms: 'Bathrooms', latitude: 'Latitude', longitude: 'Longitude', firstName: 'First Name', lastName: 'Last Name', phone: 'Phone', emergencyName: 'Emergency Contact', emergencyPhone: 'Emergency Phone', property: 'Property', tenant: 'Tenant', startDate: 'Start Date', endDate: 'End Date', securityDeposit: 'Security Deposit', petFee: 'Pet Fee', repairThreshold: 'Repair Threshold', pdf: 'PDF', dueDate: 'Due Date', description: 'Description', lateFee: 'Late Fee', method: 'Method', reference: 'Reference', title: 'Title', priority: 'Priority', kind: 'Kind', path: 'Path / URL', templateBody: 'Template Body', version: 'Version', jurisdiction: 'Jurisdiction', openGoogleMaps: 'Open Google Maps', createProperty: 'Create Property', createTenant: 'Create Tenant', createLease: 'Create Lease', createCharge: 'Create Rent Charge', createMaintenance: 'Create Maintenance Request', createDocument: 'Create Document', createTemplate: 'Create Lease Template', tenantAccountOptional: 'Optional: create tenant login account when email/password are provided.'
   },
   zh: {
-    appName: 'MCO 出租屋管理系统',
-    tagline: '面向 Florida 20–50 套出租屋的运营管理。',
-    landlordPortal: '房东后台',
-    tenantPortal: '租客门户',
-    dashboard: '仪表盘',
-    properties: '房屋',
-    tenants: '租客',
-    leases: '租约',
-    rentLedger: '租金账本',
-    maintenance: '维修',
-    documents: '文件',
-    tenantWelcome: '查看租约、租金余额、维修请求、通知和保险文件。',
-    landlordWelcome: '管理房屋、租客、租约、租金、通知、维修和文件。'
+    appName: '出租屋管理系统', tagline: '面向 Florida 20–50 套出租屋的运营管理。', home: '首页', signIn: '登录', signOut: '退出登录', signInHelp: '使用管理员或租客账号登录。', invalidLogin: '邮箱或密码错误。', email: '邮箱', password: '密码', save: '保存', create: '新建', update: '更新', delete: '删除', actions: '操作', view: '查看', status: '状态', amount: '金额', date: '日期', notes: '备注', dashboard: '仪表盘', landlordPortal: '房东后台', tenantPortal: '租客门户', properties: '房屋', tenants: '租客', leases: '租约', leaseTemplates: '租约模板', rentLedger: '租金账本', maintenance: '维修', documents: '文件', notices: '通知', insurance: '租客保险', map: '地图', landlordWelcome: '管理房屋、租客、租约、租金、通知、维修和文件。', tenantWelcome: '查看租约、租金余额、维修请求、通知和保险文件。', portfolioMap: '房源总览地图', portfolioMapHelp: '在 OpenStreetMap 地图中查看所有出租屋。', occupied: '已出租', vacant: '空置', maintenanceStatus: '维修中', inactive: '停用', noRecords: '暂无记录。', address: '地址', city: '城市', state: '州', zip: '邮编', nickname: '房屋名称', monthlyRent: '月租', deposit: '押金', bedrooms: '卧室', bathrooms: '浴室', latitude: '纬度', longitude: '经度', firstName: '名', lastName: '姓', phone: '电话', emergencyName: '紧急联系人', emergencyPhone: '紧急联系电话', property: '房屋', tenant: '租客', startDate: '开始日期', endDate: '结束日期', securityDeposit: '租约押金', petFee: '宠物费', repairThreshold: '维修阈值', pdf: 'PDF', dueDate: '到期日', description: '描述', lateFee: '滞纳金', method: '方式', reference: '参考号', title: '标题', priority: '优先级', kind: '类型', path: '路径 / 链接', templateBody: '模板正文', version: '版本', jurisdiction: '适用地区', openGoogleMaps: '打开 Google 地图', createProperty: '新建房屋', createTenant: '新建租客', createLease: '新建租约', createCharge: '新建租金账单', createMaintenance: '新建维修请求', createDocument: '新建文件', createTemplate: '新建租约模板', tenantAccountOptional: '可选：填写邮箱和密码时创建租客登录账号。'
   }
 } as const;
 
-export function getLocale(searchParams?: Record<string, string | string[] | undefined>): Locale {
-  const raw = searchParams?.lang;
-  return raw === 'zh' ? 'zh' : 'en';
-}
-
-export function t(locale: Locale) {
-  return messages[locale];
+export function getLocale(searchParams?: Record<string, string | string[] | undefined>): Locale { return searchParams?.lang === 'zh' ? 'zh' : 'en'; }
+export function t(locale: Locale) { return messages[locale]; }
+export function statusLabel(locale: Locale, status: string) {
+  const m = t(locale);
+  const map: Record<string, string> = { OCCUPIED: m.occupied, VACANT: m.vacant, MAINTENANCE: m.maintenanceStatus, INACTIVE: m.inactive, ACTIVE: locale === 'zh' ? '有效' : 'Active', DRAFT: locale === 'zh' ? '草稿' : 'Draft', SIGNED: locale === 'zh' ? '已签署' : 'Signed', EXPIRED: locale === 'zh' ? '已过期' : 'Expired', TERMINATED: locale === 'zh' ? '已终止' : 'Terminated', OPEN: locale === 'zh' ? '未结清' : 'Open', PAID: locale === 'zh' ? '已支付' : 'Paid', PARTIAL: locale === 'zh' ? '部分支付' : 'Partial', LATE: locale === 'zh' ? '逾期' : 'Late', VOID: locale === 'zh' ? '作废' : 'Void', IN_PROGRESS: locale === 'zh' ? '处理中' : 'In progress', WAITING_TENANT: locale === 'zh' ? '等待租客' : 'Waiting tenant', COMPLETED: locale === 'zh' ? '已完成' : 'Completed', CLOSED: locale === 'zh' ? '已关闭' : 'Closed' };
+  return map[status] || status;
 }

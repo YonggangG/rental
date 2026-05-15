@@ -245,7 +245,7 @@ On version tags such as `v0.1.0`, it also publishes the tag image.
 
 ## Current Status
 
-This is an MVP scaffold, not a finished production system. It currently includes route structure, map components, data model, lease template archive, PDF pipeline, Docker deployment, and docs. Next implementation steps should add real CRUD screens, authentication flows, tenant document upload, rent ledger automation, and production lease rendering.
+This is an active MVP. It now includes password-protected landlord and tenant portals, core CRUD pages for properties, tenants, leases, rent charges, maintenance requests, documents, and lease templates, plus map views and a lease PDF pipeline. Remaining production work includes polished edit forms, file upload storage, rent automation, tenant-submitted maintenance forms, and attorney-reviewed full lease rendering.
 
 ## License
 
