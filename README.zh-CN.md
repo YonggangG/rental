@@ -2,7 +2,7 @@
 
 这是一个面向 Florida 小型房东的中英双语出租屋管理 Container 项目，适合管理约 20–50 套出租屋。项目功能范围参考 MicroRealEstate，但架构刻意保持简单：一个 Web App container + 一个 PostgreSQL 数据库，方便用 Portainer 部署。
 
-![仪表盘总览](docs/images/dashboard-overview.svg)
+![登录页面](docs/images/login-screen.svg)
 
 ## 主要功能
 
@@ -19,23 +19,35 @@
 
 ## 当前界面图文
 
+### 登录页面
+
+房东后台和租客门户都需要登录。界面支持通过 `?lang=en` / `?lang=zh` 切换英文或中文，同一页面不会中英文混杂。
+
+![登录页面](docs/images/login-screen.svg)
+
 ### 房东/Admin 仪表盘
 
-Admin 页面包含关键指标、房源总览地图，以及房屋、租客、租约、租金账本、维修、文件等模块入口。
+Admin 页面包含关键指标、Leaflet/OpenStreetMap 房源总览地图，以及房屋、租客、租约、租金账本、维修、文件、租约模板等模块入口。
 
-![房东仪表盘](docs/images/dashboard-overview.svg)
+![房东仪表盘](docs/images/landlord-dashboard.svg)
 
-### 租客门户
+### Admin CRUD 与月租账单生成
 
-Tenant Portal 面向租客自助使用：下载租约 PDF、查看租金记录、提交维修请求、查看通知、上传租客保险文件。
+Admin 页面已经提供核心记录的创建/更新基础能力；租金账本可以根据 active leases 生成当月 rent charges。
 
-![租客门户](docs/images/tenant-portal.svg)
+![Admin CRUD 与月租账单生成](docs/images/admin-crud-rent.svg)
 
-### 单个房屋地图
+### 租客自助门户
 
-每个 Property 详情页可以用地址生成 Google Maps 地图和打开链接。第一版不需要 Google Maps API key。
+Tenant Portal 支持租客查看/下载 lease PDF、查看租金记录、提交维修请求，并上传 renter insurance 等文件。
 
-![房屋地图](docs/images/property-map.svg)
+![租客自助门户](docs/images/tenant-self-service.svg)
+
+### Lease 模板与 PDF 渲染
+
+Florida lease 模板已按你提供的 DOCX 段落顺序重新生成，保留提取出的 article 内容，并加入租客/房东 witness 签名字段。
+
+![Lease 模板与 PDF 渲染](docs/images/lease-template-pdf.svg)
 
 ## 技术栈
 
@@ -62,7 +74,7 @@ components/                  UI、地图、房屋组件
 lib/                         i18n、地图 helper、Prisma、lease helper
 prisma/                      数据库 schema、migration、seed
 templates/                   Lease 模板归档和提取文本
-docs/images/                 README 图文素材
+docs/images/                 README 截图/图文素材
 .github/workflows/           GHCR 发布 workflow
 Dockerfile                   生产镜像构建
 docker-compose.yml           本地 Docker Compose
@@ -143,18 +155,18 @@ http://localhost:3000
 
 ```text
 ghcr.io/yonggangg/rental:latest
-ghcr.io/yonggangg/rental:v0.1.0
+ghcr.io/yonggangg/rental:v0.3.2
 ```
 
 当前 `latest` 镜像大小：
 
 ```text
-linux/amd64 pull size: 约 316.1 MiB
-十进制大小：约 331.5 MB
+linux/amd64 pull size: 约 326.5 MiB
+十进制大小：约 342.4 MB
 Layers: 16
 ```
 
-Portainer 第一次 pull 大约会下载 330 MB；如果服务器还没有 PostgreSQL 镜像，还会额外下载 PostgreSQL image。
+Portainer 第一次 pull 大约会下载 340 MB；如果服务器还没有 PostgreSQL 镜像，还会额外下载 PostgreSQL image。
 
 本地构建：
 

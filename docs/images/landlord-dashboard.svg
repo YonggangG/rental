@@ -1,0 +1,29 @@
+<svg width="1280" height="760" viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="760" fill="#f8fafc"/>
+  <text x="70" y="74" font-family="Inter,Arial" font-size="15" fill="#64748b">← Home</text>
+  <text x="70" y="120" font-family="Inter,Arial" font-size="38" font-weight="800" fill="#0f172a">Landlord Portal</text>
+  <rect x="1040" y="70" width="74" height="32" rx="16" fill="#fff" stroke="#cbd5e1"/><text x="1060" y="92" font-family="Inter,Arial" font-size="14" fill="#334155">中文</text>
+  <rect x="1126" y="70" width="94" height="32" rx="16" fill="#fff" stroke="#cbd5e1"/><text x="1146" y="92" font-family="Inter,Arial" font-size="14" fill="#334155">Sign out</text>
+  <g transform="translate(70 152)">
+    <rect width="116" height="34" rx="17" fill="#fff" stroke="#cbd5e1"/><text x="28" y="22" font-size="14" font-family="Inter,Arial" fill="#334155">Dashboard</text>
+    <rect x="128" width="108" height="34" rx="17" fill="#fff" stroke="#cbd5e1"/><text x="158" y="22" font-size="14" font-family="Inter,Arial" fill="#334155">Properties</text>
+    <rect x="248" width="88" height="34" rx="17" fill="#fff" stroke="#cbd5e1"/><text x="272" y="22" font-size="14" font-family="Inter,Arial" fill="#334155">Tenants</text>
+    <rect x="348" width="80" height="34" rx="17" fill="#fff" stroke="#cbd5e1"/><text x="371" y="22" font-size="14" font-family="Inter,Arial" fill="#334155">Leases</text>
+    <rect x="440" width="116" height="34" rx="17" fill="#fff" stroke="#cbd5e1"/><text x="462" y="22" font-size="14" font-family="Inter,Arial" fill="#334155">Rent Ledger</text>
+    <rect x="568" width="118" height="34" rx="17" fill="#fff" stroke="#cbd5e1"/><text x="590" y="22" font-size="14" font-family="Inter,Arial" fill="#334155">Maintenance</text>
+    <rect x="698" width="104" height="34" rx="17" fill="#fff" stroke="#cbd5e1"/><text x="723" y="22" font-size="14" font-family="Inter,Arial" fill="#334155">Documents</text>
+  </g>
+  <g transform="translate(70 220)">
+    <rect width="260" height="100" rx="22" fill="#fff" stroke="#e2e8f0"/><text x="28" y="38" font-size="16" fill="#64748b" font-family="Inter,Arial">Properties</text><text x="28" y="76" font-size="34" font-weight="800" fill="#0f172a" font-family="Inter,Arial">24</text>
+    <rect x="286" width="260" height="100" rx="22" fill="#fff" stroke="#e2e8f0"/><text x="314" y="38" font-size="16" fill="#64748b" font-family="Inter,Arial">Tenants</text><text x="314" y="76" font-size="34" font-weight="800" fill="#0f172a" font-family="Inter,Arial">21</text>
+    <rect x="572" width="260" height="100" rx="22" fill="#fff" stroke="#e2e8f0"/><text x="600" y="38" font-size="16" fill="#64748b" font-family="Inter,Arial">Rent Ledger</text><text x="600" y="76" font-size="34" font-weight="800" fill="#0f172a" font-family="Inter,Arial">$42,800</text>
+    <rect x="858" width="260" height="100" rx="22" fill="#fff" stroke="#e2e8f0"/><text x="886" y="38" font-size="16" fill="#64748b" font-family="Inter,Arial">Maintenance</text><text x="886" y="76" font-size="34" font-weight="800" fill="#ea580c" font-family="Inter,Arial">3</text>
+  </g>
+  <rect x="70" y="352" width="1118" height="330" rx="24" fill="#fff" stroke="#e2e8f0"/>
+  <text x="102" y="400" font-family="Inter,Arial" font-size="26" font-weight="800" fill="#0f172a">Portfolio Map</text>
+  <text x="102" y="428" font-family="Inter,Arial" font-size="16" fill="#64748b">All rental properties on one OpenStreetMap view.</text>
+  <rect x="102" y="454" width="1054" height="190" rx="18" fill="#dff6ff" stroke="#bae6fd"/>
+  <path d="M130 590 C260 510, 410 610, 560 535 S820 470, 1120 560" fill="none" stroke="#38bdf8" stroke-width="14" opacity=".6"/>
+  <path d="M180 630 L330 490 L500 590 L660 485 L825 620 L990 500 L1140 620" fill="none" stroke="#94a3b8" stroke-width="7" opacity=".55"/>
+  <circle cx="318" cy="540" r="14" fill="#2563eb" stroke="#fff" stroke-width="5"/><circle cx="650" cy="515" r="14" fill="#16a34a" stroke="#fff" stroke-width="5"/><circle cx="910" cy="575" r="14" fill="#ea580c" stroke="#fff" stroke-width="5"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg width="1280" height="760" viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="760" fill="#f8fafc"/>
+  <text x="70" y="82" font-family="Inter,Arial" font-size="38" font-weight="800" fill="#0f172a">Lease Template + PDF</text>
+  <text x="70" y="116" font-family="Inter,Arial" font-size="18" fill="#64748b">DOCX-faithful Florida residential lease template with witness signature fields.</text>
+  <rect x="70" y="155" width="535" height="520" rx="24" fill="#fff" stroke="#e2e8f0"/>
+  <text x="102" y="204" font-family="Inter,Arial" font-size="24" font-weight="800" fill="#0f172a">Lease Template</text>
+  <g font-family="Inter,Arial" font-size="15" fill="#334155"><text x="102" y="248">ARTICLE I. LEASE TERM</text><text x="102" y="278">ARTICLE II. RENT</text><text x="102" y="308">ARTICLE III. PAYMENTS</text><text x="102" y="338">ARTICLE IV. OCCUPANCY</text><text x="102" y="368">...</text><text x="102" y="398">ARTICLE XXVI. RADON GAS</text><text x="102" y="428">ARTICLE XXVII. VEHICLES</text><text x="102" y="458">ARTICLE XXVIII PROPERTY INSURANCE</text><text x="102" y="488">ARTICLE XXIV LEASE RENEW/CANCELLATION</text><text x="102" y="538">Tenant #1 + Witness #1/#2</text><text x="102" y="568">Tenant #2 + Witness #1/#2</text><text x="102" y="598">Landlord #1 + Witness #1/#2</text></g>
+  <rect x="675" y="155" width="445" height="520" rx="10" fill="#fff" stroke="#cbd5e1"/>
+  <text x="720" y="214" font-family="Times New Roman,serif" font-size="24" font-weight="700" fill="#111827">Florida Residential Lease</text>
+  <line x1="720" y1="236" x2="1070" y2="236" stroke="#cbd5e1"/>
+  <g fill="#475569"><rect x="720" y="270" width="330" height="8" rx="4"/><rect x="720" y="292" width="300" height="8" rx="4"/><rect x="720" y="314" width="350" height="8" rx="4"/><rect x="720" y="350" width="340" height="8" rx="4"/><rect x="720" y="372" width="280" height="8" rx="4"/><rect x="720" y="394" width="360" height="8" rx="4"/><rect x="720" y="430" width="320" height="8" rx="4"/><rect x="720" y="452" width="355" height="8" rx="4"/><rect x="720" y="474" width="310" height="8" rx="4"/></g>
+  <text x="720" y="555" font-family="Times New Roman,serif" font-size="16" font-weight="700" fill="#111827">Signatures</text>
+  <line x1="720" y1="590" x2="910" y2="590" stroke="#111827"/><text x="925" y="594" font-family="Inter,Arial" font-size="12" fill="#334155">Tenant</text>
+  <line x1="720" y1="628" x2="910" y2="628" stroke="#111827"/><text x="925" y="632" font-family="Inter,Arial" font-size="12" fill="#334155">Witness</text>
+</svg>

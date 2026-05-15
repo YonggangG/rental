@@ -2,7 +2,7 @@
 
 A bilingual English/Chinese rental-property management container for small Florida landlords managing roughly 20–50 rental homes. The project is inspired by the feature scope of MicroRealEstate, but intentionally built as a simpler Portainer-friendly application: one web app container plus PostgreSQL.
 
-![Dashboard overview](docs/images/dashboard-overview.svg)
+![Login screen](docs/images/login-screen.svg)
 
 ## Highlights
 
@@ -19,23 +19,35 @@ A bilingual English/Chinese rental-property management container for small Flori
 
 ## Current MVP Screens
 
+### Login
+
+Admin and tenant portals are password-protected. The UI can switch between English and Chinese with `?lang=en` / `?lang=zh` without mixing languages on the same page.
+
+![Login screen](docs/images/login-screen.svg)
+
 ### Landlord/Admin Dashboard
 
-The Admin portal includes summary metrics, a portfolio map, and module cards for properties, tenants, leases, rent ledger, maintenance, and documents.
+The Admin portal includes summary metrics, a Leaflet/OpenStreetMap portfolio map, and module navigation for properties, tenants, leases, rent ledger, maintenance, documents, and lease templates.
 
-![Landlord dashboard](docs/images/dashboard-overview.svg)
+![Landlord dashboard](docs/images/landlord-dashboard.svg)
 
-### Tenant Portal
+### Admin CRUD and Rent Generation
 
-The Tenant portal is designed for self-service access to lease PDFs, rent balance/history, maintenance requests, notices, and renter insurance uploads.
+Admin pages provide create/update foundations for core records. The rent ledger can generate monthly rent charges from active leases.
 
-![Tenant portal](docs/images/tenant-portal.svg)
+![Admin CRUD and rent generation](docs/images/admin-crud-rent.svg)
 
-### Property Detail Map
+### Tenant Self-Service
 
-Each property detail page can display a map using an address-based Google Maps embed/search URL. This first version requires no Google Maps API key.
+The Tenant portal supports lease PDF access, rent history, maintenance request submission, and document uploads such as renter-insurance files.
 
-![Property map](docs/images/property-map.svg)
+![Tenant self-service](docs/images/tenant-self-service.svg)
+
+### Lease Template and PDF Rendering
+
+The Florida lease template is regenerated from the provided DOCX paragraph order and includes the extracted articles plus tenant/landlord witness signature fields.
+
+![Lease template and PDF rendering](docs/images/lease-template-pdf.svg)
 
 ## Technology Stack
 
@@ -62,7 +74,7 @@ components/                  UI, map, and property components
 lib/                         i18n, map helpers, Prisma, lease helpers
 prisma/                      Database schema, migrations, seed script
 templates/                   Lease template archive and extracted text
-docs/images/                 README diagrams/screenshots
+docs/images/                 README screenshots/diagrams
 .github/workflows/           GHCR publish workflow
 docs/github-actions/           Backup workflow template
 Dockerfile                   Production image build
@@ -137,18 +149,18 @@ Published image:
 
 ```text
 ghcr.io/yonggangg/rental:latest
-ghcr.io/yonggangg/rental:v0.1.0
+ghcr.io/yonggangg/rental:v0.3.2
 ```
 
 Current `latest` image size:
 
 ```text
-linux/amd64 pull size: about 316.1 MiB
-Decimal size: about 331.5 MB
+linux/amd64 pull size: about 326.5 MiB
+Decimal size: about 342.4 MB
 Layers: 16
 ```
 
-Portainer's first pull will download roughly 330 MB, plus the PostgreSQL image if it is not already present on the server.
+Portainer's first pull will download roughly 340 MB, plus the PostgreSQL image if it is not already present on the server.
 
 Local build:
 

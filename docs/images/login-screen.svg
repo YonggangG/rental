@@ -1,0 +1,17 @@
+<svg width="1280" height="760" viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="760" fill="#f8fafc"/>
+  <rect x="420" y="120" width="440" height="520" rx="28" fill="#fff" stroke="#e2e8f0"/>
+  <text x="464" y="184" font-family="Inter,Arial" font-size="34" font-weight="700" fill="#0f172a">Sign in</text>
+  <text x="464" y="218" font-family="Inter,Arial" font-size="17" fill="#64748b">Use your admin or tenant account.</text>
+  <rect x="735" y="158" width="72" height="32" rx="16" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="754" y="180" font-family="Inter,Arial" font-size="14" fill="#334155">中文</text>
+  <text x="464" y="288" font-family="Inter,Arial" font-size="15" font-weight="600" fill="#334155">Email</text>
+  <rect x="464" y="304" width="352" height="50" rx="12" fill="#fff" stroke="#cbd5e1"/>
+  <text x="486" y="335" font-family="Inter,Arial" font-size="16" fill="#94a3b8">admin@example.com</text>
+  <text x="464" y="392" font-family="Inter,Arial" font-size="15" font-weight="600" fill="#334155">Password</text>
+  <rect x="464" y="408" width="352" height="50" rx="12" fill="#fff" stroke="#cbd5e1"/>
+  <text x="486" y="439" font-family="Inter,Arial" font-size="16" fill="#94a3b8">••••••••••••</text>
+  <rect x="464" y="494" width="352" height="50" rx="14" fill="#1d4ed8"/>
+  <text x="612" y="526" text-anchor="middle" font-family="Inter,Arial" font-size="17" font-weight="700" fill="#fff">Sign in</text>
+  <text x="640" y="690" text-anchor="middle" font-family="Inter,Arial" font-size="15" fill="#64748b">Password-protected landlord and tenant portals</text>
+</svg>
