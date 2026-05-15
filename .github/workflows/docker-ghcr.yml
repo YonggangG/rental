@@ -34,7 +34,6 @@ jobs:
           images: ghcr.io/yonggangg/rental
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
-            type=sha,prefix=sha-
             type=ref,event=tag
 
       - name: Build and push
