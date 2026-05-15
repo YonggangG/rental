@@ -1,4 +1,4 @@
-<!-- Full template rebuilt from the provided DOCX source extract. Review with Florida counsel before production use. -->
+<!-- Template regenerated from the provided DOCX with paragraph order preserved as closely as possible. Variable placeholders replace only document blanks/fields needed by the app. Review with Florida counsel before production use. -->
 
 ## Template Variables
 - `{{lease_date}}`
@@ -20,7 +20,8 @@
 - `{{vehicle_info}}`
 - `{{renter_insurance_required}}`
 
-# Florida Residential Lease Agreement (Long Term)
+# RESIDENTIAL LEASE
+_(Long term)_
 This Lease Agreement is made on {{lease_date}} between {{tenant_names}} (“Tenant”) and {{landlord_name}} (“Landlord”).
 Landlord agrees to lease to Tenant and Tenant agree to hire from Landlord, located at {{property_address}} (the “Premises”), Florida, on the following terms and conditions:
 
@@ -47,10 +48,10 @@ Tenant agrees to pay for all utilities, including electricity and telephone, use
 
 ## ARTICLE VIII. REPAIRS
 Tenant shall take good care of the Premises and the appliances and fixtures in them and shall maintain them in good order and condition. The tenant shall make no alteration or additions nor install in or about the premises, interior or exterior, and major appliances or devices of any kind without, in each case, the written consent of the landlord. All alterations, additions and fixtures by the tenant, shall remain a part of the premises, unless the landlord otherwise elects, in which case the premises must be returned to its original condition at lease commencement.
-The tenant is responsible to promptly notify the landlord of any all repairs or potential repairs needed, regardless of cause and /or extent. If the repair is caused by normal wear and tear and/or non- tenant-negligent mechanical failure, the landlord will be responsible for the portion exceeding $170 and tenant will be responsible for ${{tenant_repair_portion}}. The tenant is responsible for all other repairs and /or other costs associated with having a vendor go to the property. The tenant is also responsible for any repairs and/or vendor charges which do not exceed ${{tenant_repair_portion}}. If the repair would have cost less than ${{tenant_repair_portion}}, but failure to repair led to subsequent damage exceeding that amount, the tenant is responsible for the full cost of said repair and subsequent damages. If the tenant fails to report any needed repair or damage within TWO (2) days of occurrence, then the tenant will be responsible for the full cost of any needed repair and subsequent damage. If any repairs exceeding ${{tenant_repair_portion}} are done without the landlord’s permission and/or supervision, then, at the landlord’s option, the cost of said repairs will be totally borne by the tenant, regardless of the type of extent of the repairs. The toilets and other water and sewer apparatus and fixtures shall not be used for purposes other than for which they were intended. No sweepings, rags disposable diapers, sanitary napkins or other improper articles shall be discarded therein. The cost of repairing any damage resulting from misuse or neglect by the tenant shall be borne completely by the tenant. The landlord reserves the right to select repair person(s) to repair all damages.
+The tenant is responsible to promptly notify the landlord of any all repairs or potential repairs needed, regardless of cause and /or extent. If the repair is caused by normal wear and tear and/or non- tenant-negligent mechanical failure, the landlord will be responsible for the portion exceeding ${{repair_threshold}} and tenant will be responsible for ${{tenant_repair_portion}}. The tenant is responsible for all other repairs and /or other costs associated with having a vendor go to the property. The tenant is also responsible for any repairs and/or vendor charges which do not exceed ${{tenant_repair_portion}}. If the repair would have cost less than ${{tenant_repair_portion}}, but failure to repair led to subsequent damage exceeding that amount, the tenant is responsible for the full cost of said repair and subsequent damages. If the tenant fails to report any needed repair or damage within TWO (2) days of occurrence, then the tenant will be responsible for the full cost of any needed repair and subsequent damage. If any repairs exceeding ${{tenant_repair_portion}} are done without the landlord’s permission and/or supervision, then, at the landlord’s option, the cost of said repairs will be totally borne by the tenant, regardless of the type of extent of the repairs. The toilets and other water and sewer apparatus and fixtures shall not be used for purposes other than for which they were intended. No sweepings, rags disposable diapers, sanitary napkins or other improper articles shall be discarded therein. The cost of repairing any damage resulting from misuse or neglect by the tenant shall be borne completely by the tenant. The landlord reserves the right to select repair person(s) to repair all damages.
 
 ## ARTICLE IX. ANIMALS
-Tenant shall keep no domestic or other animals in, about, or on the Premises without the written consent of Landlord. TENANT is permitted to keep {{pet_allowed}} pets only. For this agreement, pets are defined to include, but not be limited to, the following: {{pet_description}} There is a non-refundable fee for each pet ${{pet_fee_monthly}} /month. This fee is paid for the “privilege” of having a pet and is not considered as a prepayment for any other purpose. If any additional pets/animals of any description are found on or about the premises without specific permission of the LANDLORD, then the TENANT agrees to pay the LANDLORD a (an additional) pet fee of $10.00 per day per pet/animal for each day from the beginning of the current lease period through to the current date. If LANDLORD agrees, then the $10.00/day fee may be waived in lieu of an additional, non-refundable pet fee of $30 per pet/animal. Failure to pay either of will be considered a breach of this agreement and the TENANT will be in DEFAULT.
+Tenant shall keep no domestic or other animals in, about, or on the Premises without the written consent of Landlord. TENANT is permitted to keep {{pet_allowed}} pets only. For this agreement, pets are defined to include, but not be limited to, the following: {{pet_description}}  There is a non-refundable fee for each pet ${{pet_fee_monthly}} /month. This fee is paid for the “privilege” of having a pet and is not considered as a prepayment for any other purpose. If any additional pets/animals of any description are found on or about the premises without specific permission of the LANDLORD, then the TENANT agrees to pay the LANDLORD a (an additional) pet fee of $10.00 per day per pet/animal for each day from the beginning of the current lease period through to the current date. If LANDLORD agrees, then the $10.00/day fee may be waived in lieu of an additional, non-refundable pet fee of $30 per pet/animal. Failure to pay either of will be considered a breach of this agreement and the TENANT will be in DEFAULT.
 
 ## ARTICLE X. ENTRY FOR INSPECTION, REPAIRS, AND ALTERATIONS
 Landlord and Landlord’s agents shall have the right to enter the leased premises for inspection at all reasonable hours and whenever necessary to make repairs and alterations. Tenant shall make no alterations, changes, or improvements to the house and outside premises without the prior written consent of Landlord.
@@ -60,12 +61,12 @@ Landlord and Landlord’s agents shall have the right to enter the leased premis
 ### Section 11.01. Tenant shall be responsible for all conditions created or caused by the negligent or wrongful act or omission of the Tenant, a member of the Tenant’s family, or other person on the Premises with Tenant’s consent.
 
 ### Section 11.02. At all times during the tenancy, the Tenant shall:
-- (a)Keep the Premises clean and sanitary and maintain and care for the lawn and shrubs.
-- (b)Remove all garbage in a clean and sanitary manner.
-- (c)Keep all plumbing fixtures clean and sanitary and in repair.
-- (d)Not destroy, deface, damage, impair, or remove any part of the Premises or property in them belonging to Landlord, or permit any person to do so.
-- (e)Conduct himself/herself and require other people on the Premises with Tenant’s consent to conduct themselves, in a manner that does not unreasonably disturb the neighbors or constitute a breach of the peace.
-- (f)Use and operate in a reasonable manner all electrical plumbing, sanitary, heating, ventilating, air- conditioning, and other facilities and appliances. On all air conditioning units, central and wall units, there is a filter system. It is tenant’s responsibility to maintain, clean and /or change this filer on a MONTHLY basis. If there is any damage or repair bills due either directly or indirectly to the air conditioning system because the filter has not been properly maintained, then the tenant will be completely liable for the payment of such repairs.
+- (a) Keep the Premises clean and sanitary and maintain and care for the lawn and shrubs.
+- (b) Remove all garbage in a clean and sanitary manner.
+- (c) Keep all plumbing fixtures clean and sanitary and in repair.
+- (d) Not destroy, deface, damage, impair, or remove any part of the Premises or property in them belonging to Landlord, or permit any person to do so.
+- (e) Conduct himself/herself and require other people on the Premises with Tenant’s consent to conduct themselves, in a manner that does not unreasonably disturb the neighbors or constitute a breach of the peace.
+- (f) Use and operate in a reasonable manner all electrical plumbing, sanitary, heating, ventilating, air- conditioning, and other facilities and appliances. On all air conditioning units, central and wall units, there is a filter system. It is tenant’s responsibility to maintain, clean and /or change this filer on a MONTHLY basis. If there is any damage or repair bills due either directly or indirectly to the air conditioning system because the filter has not been properly maintained, then the tenant will be completely liable for the payment of such repairs.
 
 ## ARTICLE XII. OBLIGATIONS OF LANDLORD
 
@@ -78,12 +79,12 @@ Landlord and Landlord’s agents shall have the right to enter the leased premis
 ### Section 12.04. Landlord shall not prohibit Tenant from using a flotation bedding system in a dwelling unit, provided that the system does not violate an applicable building code and Tenant carries flotation insurance in the Tenant’s name as is standard in the industry in an amount deemed reasonable to protect the Tenant and the Landlord against personal injury and property damage to the dwelling units. The insurance must include a loss payable clause in the policy for the benefit of the Landlord.
 
 ### Section 12.05. At all times during the tenancy, the Landlord shall:
-- (a)Comply with the requirements of all applicable buildings, housing, and health codes.
-- (b)If no building, housing, or health codes are applicable, maintain in good repair all roofs, windows, doors, foundations, screens, floors, steps, porches, exterior walls, and other structural components, and assure that these structural components can resist normal forces and loads.
-- (c)Maintain plumbing in reasonable working conditions.
-- (d)Provide adequate fire protection for premises.
-- (e)Make reasonable provisions during the tenancy for extermination of all rats, mice, roaches, ants, wood-destroying organisms, and bedbugs. If it is necessary to vacate the Premises during the extermination process, the Landlord shall not be liable for damages but shall abate the rent during the period that the Premises are vacated and shall give the Tenant seven days’ written notice of the need to vacate the Premises.
-- (f)Make provisions for locks and keys, clean and safe common areas, garbage removal and outside receptacles, functioning facilities for heat during winter, running water, and hot water.
+- (a) Comply with the requirements of all applicable buildings, housing, and health codes.
+- (b) If no building, housing, or health codes are applicable, maintain in good repair all roofs, windows, doors, foundations, screens, floors, steps, porches, exterior walls, and other structural components, and assure that these structural components can resist normal forces and loads.
+- (c) Maintain plumbing in reasonable working conditions.
+- (d) Provide adequate fire protection for premises.
+- (e) Make reasonable provisions during the tenancy for extermination of all rats, mice, roaches, ants, wood-destroying organisms, and bedbugs. If it is necessary to vacate the Premises during the extermination process, the Landlord shall not be liable for damages but shall abate the rent during the period that the Premises are vacated and shall give the Tenant seven days’ written notice of the need to vacate the Premises.
+- (f) Make provisions for locks and keys, clean and safe common areas, garbage removal and outside receptacles, functioning facilities for heat during winter, running water, and hot water.
 
 ## ARTICLE XIII. WASTE AND NUISANCE
 Tenant agrees that Tenant will not commit waste on the Premises, will not maintain or permit to be maintained a nuisance on the Premises, nor will use the Premises, or permit their use, in an unlawful manner.
@@ -100,9 +101,9 @@ On expiration or other termination of the term of this Lease, Tenant shall immed
 ## ARTICLE XVII. DEFAULT
 
 ### Section 17.01. Notwithstanding any provisions to the contrary contained in this Lease, the Landlord may deliver a written three-day notice of cancellation of this Lease to Tenant, if any of the following conditions are applicable:
-- (a)The Tenant defaults in the payment of rent or additional rent when due.
-- (b)The Tenant defaults in the fulfillment of any of the covenants of this Lease and the default continues for seven days after written notice from Landlord to Tenant. If the default is such that it cannot be completely cured or remedied within ten days, the default provisions are applicable if the Tenant has not diligently commenced curing the default within the ten-day period.
-- (c)The Tenant is adjudicated bankrupt, insolvent, or placed in receivership or proceedings are instituted against the Tenant for bankruptcy, insolvency, receivership, agreement or composition, or assignment for the benefit of creditors.
+- (a) The Tenant defaults in the payment of rent or additional rent when due.
+- (b) The Tenant defaults in the fulfillment of any of the covenants of this Lease and the default continues for seven days after written notice from Landlord to Tenant. If the default is such that it cannot be completely cured or remedied within ten days, the default provisions are applicable if the Tenant has not diligently commenced curing the default within the ten-day period.
+- (c) The Tenant is adjudicated bankrupt, insolvent, or placed in receivership or proceedings are instituted against the Tenant for bankruptcy, insolvency, receivership, agreement or composition, or assignment for the benefit of creditors.
 
 ### Section 17.02. On the expiration of the three-day’ notice period, this Lease shall expire as fully and completely as if the expiration of the three-day period were the day fixed for the end of this Lease, and the Tenant shall quit and surrender the Premises to the Landlord.
 
@@ -141,9 +142,9 @@ State law requires the following notice to be given: "Radon is a naturally occur
 
 ## ARTICLE XXVII. VEHICLES
 Tenant shall not keep or permit them to be kept on the leased property any junk vehicle, vehicle on which current registration plates are not displayed, trailer, truck, camper, camp truck, house trailer, boat, motorcycle, van, or the like, nor there any repair or extraordinary maintenance of automobiles or other vehicles on the property. If there is a Community Association (COA or HOA), all parking must be in accordance with their restrictions. In accordance with any applicable municipal law, the landlord may cause to be removed, at the tenant’s expense, any vehicle parked in violation of the parking rules. The Tenant further agrees that only the following vehicles will be parked overnight at the Premises:
-- _____________________________________ [Make, Model, Color & Plate]
-- _____________________________________ [Make, Model, Color & Plate]
-- _____________________________________ [Make, Model, Color & Plate]
+_____________________________________ [Make, Model, Color & Plate]
+_____________________________________ [Make, Model, Color & Plate]
+_____________________________________ [Make, Model, Color & Plate]
 
 ## ARTICLE XXVIII PROPERTY INSURANCE
 The landlord and the tenant shall each be responsible to maintain appropriate insurance coverage for their respective interests in the premises and the property located on the premises. The landlord’s insurance does not cover the property belonging to the tenant or any of the responsibilities belonging to the tenant. Tenants are required to provide proof of renter insurance before the day moves in. This rental insurance will be verified by our staff after moving in.
@@ -151,49 +152,45 @@ The landlord and the tenant shall each be responsible to maintain appropriate in
 ## ARTICLE XXIV LEASE RENEW/CANCELLATION
 It is agreed that unless the landlord gives the tenant, or the tenant gives the landlord written notice to terminate this lease at least sixty calendar days prior to the end of the original term, or any renewal term, of this lease, then this lease shall renew itself from month-to-month, with the end of the month being the end of any renewal term; either party will then have the right of 60-day notice to be effective from the 1st day of the month following the date of said notice through to the end of that month.
 BY SIGNING THIS RENTAL AGREEMENT, THE TENANT AGREES THAT UPON SURRENDER, ABANDONMENT, OR RECOVERY OF POSSESSION OF THE DWELLING UNIT DUE TO THE DEATH OF THE LAST REMAINING TENANT, AS PROVIDED BY CHAPTER 83, FLORIDA STATUTES, THE LANDLORD SHALL NOT BE LIABLE OR RESPONSIBLE FOR STORAGE OR DISPOSITION OF THE TENANT’S PERSONALPROPERTY.
+IN WITNESS WHEREOF, the parties have executed this Lease on the day, and year written above.
+Tenant #1    Witness #1 for Tenant #1
+[signature]        [signature]
+[written]         [written]
+Witness #2 for Tenant #1
+[signature]
+[written]
+Tenant #2    Witness #1 for Tenant #2
+[signature]         [signature]
+[written]         [written]
+Witness #2 for Tenant #2
+[signature]
+[written]
+Landlord #1    Witness #1 for Landlord #1
+[signature]         [signature]
+[written]         [written]
+Witness #2 for Landlord #1
+[signature]
+[written]
 
-## Signature and Witness Blocks
-
-IN WITNESS WHEREOF, the parties have executed this Lease on the day and year written above.
-
-### Tenant #1
+## Clean Signature / Witness Fields
 
 Tenant #1 Signature: ____________________________________  Date: ______________
-
 Tenant #1 Printed Name: _________________________________
-
 Witness #1 for Tenant #1 Signature: ______________________  Date: ______________
-
 Witness #1 for Tenant #1 Printed Name: ___________________
-
 Witness #2 for Tenant #1 Signature: ______________________  Date: ______________
-
 Witness #2 for Tenant #1 Printed Name: ___________________
 
-### Tenant #2
-
 Tenant #2 Signature: ____________________________________  Date: ______________
-
 Tenant #2 Printed Name: _________________________________
-
 Witness #1 for Tenant #2 Signature: ______________________  Date: ______________
-
 Witness #1 for Tenant #2 Printed Name: ___________________
-
 Witness #2 for Tenant #2 Signature: ______________________  Date: ______________
-
 Witness #2 for Tenant #2 Printed Name: ___________________
 
-### Landlord #1
-
 Landlord #1 Signature: __________________________________  Date: ______________
-
 Landlord #1 Printed Name: _______________________________
-
 Witness #1 for Landlord #1 Signature: ____________________  Date: ______________
-
 Witness #1 for Landlord #1 Printed Name: _________________
-
 Witness #2 for Landlord #1 Signature: ____________________  Date: ______________
-
 Witness #2 for Landlord #1 Printed Name: _________________
