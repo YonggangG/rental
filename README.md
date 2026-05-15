@@ -137,7 +137,18 @@ Published image:
 
 ```text
 ghcr.io/yonggangg/rental:latest
+ghcr.io/yonggangg/rental:v0.1.0
 ```
+
+Current `latest` image size:
+
+```text
+linux/amd64 pull size: about 316.1 MiB
+Decimal size: about 331.5 MB
+Layers: 16
+```
+
+Portainer's first pull will download roughly 330 MB, plus the PostgreSQL image if it is not already present on the server.
 
 Local build:
 
@@ -168,6 +179,41 @@ Generate a strong secret:
 ```bash
 openssl rand -base64 32
 ```
+
+### Environment variable reference
+
+| Variable | Purpose |
+| --- | --- |
+| `APP_URL` | Public URL of the app, for example `https://rental.yourdomain.com` or `http://server-ip:3000` during testing. |
+| `NEXTAUTH_URL` | URL used by NextAuth for login/session callbacks. Usually the same as `APP_URL`. It must be accurate once authentication is enabled. |
+| `NEXTAUTH_SECRET` | Long random secret used to sign/encrypt auth sessions and tokens. Generate it with `openssl rand -base64 32`. |
+| `POSTGRES_DB` | PostgreSQL database name. Default example: `rental`. |
+| `POSTGRES_USER` | PostgreSQL username. Default example: `rental`. |
+| `POSTGRES_PASSWORD` | PostgreSQL password. Use a strong password, especially on an internet-accessible server. |
+| `ADMIN_EMAIL` | Initial admin account email seeded on first deployment. |
+| `ADMIN_PASSWORD` | Initial admin password. Use a temporary strong password and change it once account management is implemented. |
+| `ADMIN_NAME` | Display name for the initial admin user, for example `Landlord Admin`. |
+
+### YAML quoting recommendation
+
+In Docker Compose / Portainer YAML, quoting environment values is recommended, especially for URLs, secrets, passwords, and values containing spaces or special characters such as `:`, `#`, `$`, `@`, or `!`.
+
+Recommended YAML style:
+
+```yaml
+environment:
+  APP_URL: "https://your-domain.example.com"
+  NEXTAUTH_URL: "https://your-domain.example.com"
+  NEXTAUTH_SECRET: "replace-with-long-random-secret"
+  POSTGRES_DB: "rental"
+  POSTGRES_USER: "rental"
+  POSTGRES_PASSWORD: "replace-with-strong-password"
+  ADMIN_EMAIL: "admin@example.com"
+  ADMIN_PASSWORD: "replace-with-temporary-admin-password"
+  ADMIN_NAME: "Landlord Admin"
+```
+
+If you fill values in Portainer's Environment Variables table UI, enter the raw values without quote characters.
 
 ### Portainer steps
 

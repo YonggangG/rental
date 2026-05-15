@@ -143,7 +143,18 @@ http://localhost:3000
 
 ```text
 ghcr.io/yonggangg/rental:latest
+ghcr.io/yonggangg/rental:v0.1.0
 ```
+
+当前 `latest` 镜像大小：
+
+```text
+linux/amd64 pull size: 约 316.1 MiB
+十进制大小：约 331.5 MB
+Layers: 16
+```
+
+Portainer 第一次 pull 大约会下载 330 MB；如果服务器还没有 PostgreSQL 镜像，还会额外下载 PostgreSQL image。
 
 本地构建：
 
@@ -174,6 +185,41 @@ ADMIN_NAME=Landlord Admin
 ```bash
 openssl rand -base64 32
 ```
+
+### 环境变量说明
+
+| 变量 | 作用 |
+| --- | --- |
+| `APP_URL` | 应用的公开访问地址，例如 `https://rental.yourdomain.com`；测试时也可以用 `http://server-ip:3000`。 |
+| `NEXTAUTH_URL` | NextAuth 登录/session callback 使用的地址，通常和 `APP_URL` 相同。启用登录后这个值必须准确。 |
+| `NEXTAUTH_SECRET` | 用于签名/加密登录 session 和 token 的长随机密钥。可用 `openssl rand -base64 32` 生成。 |
+| `POSTGRES_DB` | PostgreSQL 数据库名称，示例值：`rental`。 |
+| `POSTGRES_USER` | PostgreSQL 用户名，示例值：`rental`。 |
+| `POSTGRES_PASSWORD` | PostgreSQL 密码。建议使用强密码，尤其是公网服务器部署时。 |
+| `ADMIN_EMAIL` | 首次部署时 seed 的 admin 账号邮箱。 |
+| `ADMIN_PASSWORD` | 首次 admin 密码。建议使用临时强密码，并在账号管理功能完善后更换。 |
+| `ADMIN_NAME` | 初始 admin 显示名称，例如 `Landlord Admin`。 |
+
+### YAML 是否需要加引号？
+
+建议在 Docker Compose / Portainer YAML 里给环境变量值加引号，尤其是 URL、secret、password，以及包含空格或特殊字符的值，例如 `:`, `#`, `$`, `@`, `!`。
+
+推荐 YAML 写法：
+
+```yaml
+environment:
+  APP_URL: "https://your-domain.example.com"
+  NEXTAUTH_URL: "https://your-domain.example.com"
+  NEXTAUTH_SECRET: "replace-with-long-random-secret"
+  POSTGRES_DB: "rental"
+  POSTGRES_USER: "rental"
+  POSTGRES_PASSWORD: "replace-with-strong-password"
+  ADMIN_EMAIL: "admin@example.com"
+  ADMIN_PASSWORD: "replace-with-temporary-admin-password"
+  ADMIN_NAME: "Landlord Admin"
+```
+
+如果是在 Portainer 的 Environment Variables 表格界面里填写，通常不要输入引号，直接填写原始值即可。
 
 ### Portainer 操作步骤
 
